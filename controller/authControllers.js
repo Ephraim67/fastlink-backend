@@ -71,7 +71,7 @@ const generateToken = (user) => {
 // Function to handle user login
 exports.postLogin = async (req, res) => {
     const { email, password } = req.body;
-    const errors = ValidationResult(req);
+    const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
         return res.status(422).json({ error: errors.array()[0].msg})
