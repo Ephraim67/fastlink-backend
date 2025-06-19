@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    country: {
+        type: String,
+    },
+    state: {
+        type: String
+    },
     isAdmin: {
         type: Boolean,
         default: false

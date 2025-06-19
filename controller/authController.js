@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 
 exports.postSignup = async (req, res) => {
-    const { name, email, password, confirmPassword } = req.body;
+    const { name, email, password, confirmPassword, country, state } = req.body;
 
 
     // Run validation result check
@@ -15,7 +15,7 @@ exports.postSignup = async (req, res) => {
 
     // Check if passwords match
     if (password !== confirmPassword) {
-        console.log('Password mismatch detected');
+        console.log('Password does not match.');
         return res.status(422).json({ error: "Password do not match" });
     }
 
@@ -35,6 +35,8 @@ exports.postSignup = async (req, res) => {
             name,
             email,
             password: hashedPassword,
+            country,
+            state,
             isVerified: false
         });
 
